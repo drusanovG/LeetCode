@@ -31,32 +31,17 @@
 
 #========CODE===========
 
-fn = ""
-l1 = [2, 4, 3]
-l2 = [8, 0, 5]
-l1.reverse()
-l2.reverse()
-for el in l1:
-    fn = fn + str(el)
-res = int(fn)
-fn = ""
-for el in l2:
-    fn = fn + str(el)
-res = int(str(res + int(fn)))
-#res = int(str(res) [::-1])
-print(res)
-if res % 10 == 0:
-	print("ekw")
-print("kekw")
-a = 0 % 10
-print(a)
-#while true:
-#	if res % 10 = 0:
-#		res = res / 10
-#		i = 0
-#	else:
-#		break
-#res = int(str(res) [::-1])
-#print([int(d) for d in str(res)])
-#
+class Solution:
+    def addTwoNumbers(self, l1, l2,c = 0):
+        val = l1.val + l2.val + c
+        c = val // 10
+        ret = ListNode(val % 10 ) 
+        
+        if (l1.next != None or l2.next != None or c != 0):
+            if l1.next == None:
+                l1.next = ListNode(0)
+            if l2.next == None:
+                l2.next = ListNode(0)
+            ret.next = self.addTwoNumbers(l1.next,l2.next,c)
+        return ret
 ##Конечный результат может вылезти за пределы данные в условие
